@@ -1,0 +1,143 @@
+/* Importing A Font From Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Applying Font to Everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Handles Centering DIV */
+.center {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Background for Page */
+html, body {
+    background: rgb(238, 231, 231);
+}
+
+ /* Handle Company Logo */
+ .logo {
+    width: 50%;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    margin: auto;
+}
+
+.logo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+}   
+
+/* Handle Company Motto Style */
+.motto {
+    font-size: 20px;
+    color: #407DF7;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+/* Left Side - Always Show NavBar */
+.sidenav {
+  overflow: hidden;
+  position: absolute;
+	min-height: 100vh;
+  max-height: 100vh;
+	width: 20%;
+	background-color: #FAC14E;
+  border-right: 2px solid black;
+  z-index: 1;
+    /*
+	float: left;
+    */
+  }
+
+/* Navbar Links */
+  .sidenav ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    z-index: 1;
+    top: 0; 
+    left: 0;
+  }
+
+  .sidenav li {
+    font-size:  25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: black;
+    padding: 40px 0 40px 5px;
+    margin: auto;
+    text-align: center;
+  }
+
+.sidenav li:hover {
+    background: #407DF7;
+    color: rgb(238, 231, 231);
+}
+  .sidenav a {
+    text-decoration: none;
+  }
+
+  
+#logout-icon:hover {
+    filter: hue-rotate(180deg);
+}
+
+/* Page content */
+.main {
+  margin-left: 22%; /* Same as the width of the sidenav */
+}
+
+
+/* Handle Input Fields */
+input {
+  height: 70px;
+  width: 300px;
+  padding-left: 10px;
+  border-radius: 5px;
+  background: rgba(238, 231, 231, 0.918);
+}
+
+/* Make Table && Input Fields Center */
+.push {
+  padding-left: 28.5%;
+}
+
+
+/* Stylize Input Placeholder text */
+::placeholder {
+  font-size: 20px;
+}
+
+/* Handle Add VIN Button */
+.main .btn {
+  height: 50px;
+  width: 250px;
+  background-color: #0A5BFC;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #b1b1b1,
+      -3px -3px 3px #fff;
+  letter-spacing: 1.3px;
+  font-size: 22px;
+  background: #407DF7;
+  color: white;
+}
+
+.main .btn:hover {
+  background: #FAC14E;
+  color: white;
+}
+
+
