@@ -3,9 +3,9 @@ The GitHub containing my entire Computer Information Systems - Cybersecurity deg
 
 ## Project Sections:
 A. [Server Setup and Configuration](#-Server-Setup-&-Configuration)
-	1. [Installations](#Installations)
-	2. [Configurations](#Configurations)
-	3. [Verifying Operations](#Verifying-Operations)
+- [Installations](#Installations)
+- [Configurations](#Configurations)
+- [Verifying Operations](#Verifying-Operations)
 B. [Mileage Master Schema](#Mileage-Master-Database-Configuration])
 
 
