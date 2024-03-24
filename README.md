@@ -11,7 +11,9 @@ A. **[Server Setup and Configuration](#-Server-Setup-&-Configuration)**
 B. **[Mileage Master Schema](#Mileage-Master-Database-Configuration])**
 
 
-C. [PHP Sessions Setup](#Configuring-PHP-Sessions)
+C. **[PHP Sessions Setup](#Configuring-PHP-Sessions)**
+
+D. [Switching from Vulnerable to Secured Application](#Switch-Vulnerable-to-Secured-Application)
 
 
 # Server Setup & Configuration
@@ -223,7 +225,7 @@ ALTER TABLE `sessions`
 	ADD PRIMARY KEY (`session_id`);
 ```
 
-# Switch from Vulnerable to Secured Application
+# Switch Vulnerable to Secured Application
 The [Application](Application) directory contains both secured and vulnerable code. This is fo testing purposes. To assist with this I created a bash script [swap.sh](swap.sh). 
 
 Just run *swap.sh* from CLI, the script will detect if either secured or vulnerable preceeds index.php. The script then replaces the current index.php, Mileage.php, and Search.php with the opoosite of what currently preceeds [vuln/secure]-index.php.
