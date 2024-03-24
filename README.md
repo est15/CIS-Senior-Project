@@ -39,6 +39,11 @@ Install all of the necessary PHP components:
 sudo apt install php php-mysql libapache2-mod-php
 ```
  
+### Netfilter for PHP Sessions:
+```shell
+sudo apt install netfilter-persistent
+```
+
 ## Configurations
 
 ### Firewall Configurations
@@ -130,12 +135,20 @@ Run Secure Script:
 sudo mysql_secure_installation
 ```
 
-Utilize the following for the script's prompts:
-	1. Root Password: password
-	2. Validate Password Plugin: NO
-	3. Disable Anonymous Logins: YES
-	4. Remote Root Logins: YES
-	5. Removal of Test Database: YES
+Utilize the following for the secure script's prompts:
+1. Root Password: password
+
+2. Change Password for Root: NO
+
+2. Validate Password Plugin: NO
+
+3. Disable Anonymous Logins: YES
+
+4. Remote Root Logins: YES
+
+5. Removal of Test Database: YES
+
+6. Reload Privilege Tables: YES
 
 
 ## Verifying Operations
@@ -218,37 +231,40 @@ CREATE TABLE `mileages` (
 
 **Configure Primary Key:**
 ```mysql
-ALTER TABLE 'mileages' ADD PRIMARY KEY ('id');
+ALTER TABLE `mileages` ADD PRIMARY KEY (`id`);
 ```
 
 **Configure Auto Increment:**
 ```mysql
-ALTER TABLE 'mileages' MODIFY 'id' int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `mileages` MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 ```
 # Configuring PHP Sessions
 ## Create the Sessions Table
 ```mysql
-CREATE TABLE `sessions` (
-	`session_id` varchar(255) NOT NULL,
-	`id` int(10) UNSIGNED NOT NULL,
-	`login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
-
-**Add Primary Key:**
-```mysql
-ALTER TABLE `sessions`
-	ADD PRIMARY KEY (`session_id`);
+CREATE TABLE sessions
+(
+	id varchar(32) NOT NULL,
+	access int(10) unsigned,
+	data text,
+	PRIMARY KEY (id)
+);
 ```
 
 **Make sure to update PHP-MySQL-Sessions database.class.php:**
 ```php
+// Define Database Configuration
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "password");
 define("DB_NAME", "mileage_master");
 ```
-insert the above into the *// Define database configuration* section
+replace the above with whats currently under the *// Define database configuration* section
+
+## Ensure user has necessary Permissions:
+```mysql
+GRANT ALL PRIVILEGES ON *.* TO 'root'@localhost WITH GRANT OPTION;
+```
+
 
 # Switch Vulnerable to Secured Application
 The [Application](Application) directory contains both secured and vulnerable code. This is for testing purposes. To assist with this I created a bash script [swap.sh](swap.sh). 

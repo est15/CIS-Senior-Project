@@ -6,7 +6,7 @@
 	Last Modified 2/27/2017
 	*/
 
-	// Define database configuration
+	// Define database configuration <-- Change this
 	define("DB_HOST", "localhost");
 	define("DB_USER", "yourusername");
 	define("DB_PASS", "1234567890");
