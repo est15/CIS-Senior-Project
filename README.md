@@ -2,12 +2,16 @@
 The GitHub containing my entire Computer Information Systems - Cybersecurity degree's capstone project. 
 
 ## Project Sections:
-A. [Server Setup and Configuration](#-Server-Setup-&-Configuration)
+A. **[Server Setup and Configuration](#-Server-Setup-&-Configuration)**
 - [Installations](#Installations)
 - [Configurations](#Configurations)
 - [Verifying Operations](#Verifying-Operations)
 
-B. [Mileage Master Schema](#Mileage-Master-Database-Configuration])
+
+B. **[Mileage Master Schema](#Mileage-Master-Database-Configuration])**
+
+
+C. [PHP Sessions Setup](#Configuring-PHP-Sessions)
 
 
 # Server Setup & Configuration
@@ -169,6 +173,63 @@ Create an info.php file in Mileage Master's root directory:
 Accessing info.php in a web browser should output a page with the current PHP installation's details. 
 
 # Mileage Master Database Configuration
+First log onto the MySQL Server:
+```bash
+mysql -u root -p -h localhost
+```
+
+## Create Mileage Master Schema
+```mysql
+CREATE DATABASE mileage_master;
+```
+
+## Create Users Tables
+```mysql
+CREATE TABLE `users` (
+	`id` int(10) UNSIGNED NOT NULL,
+	`fullname` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+	`username` VARCHAR(255) NOT NULL,
+	`password` VARCHAR(255) NOT NULL,
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+**Add Primary Key && Unique Key:**
+```mysql
+ALTER TABLE `users`
+	ADD PRIMARY KEY (`id`);
+```
+
+**Ensure ID auto increments:**
+```mysql
+ALTER TABLE `users`
+	MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+```
+
+# Configuring PHP Sessions
+## Create the Sessions Table
+```mysql
+CREATE TABLE `sessions` (
+	`session_id` varchar(255) NOT NULL,
+	`id` int(10) UNSIGNED NOT NULL,
+	`login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+**Add Primary Key:**
+```mysql
+ALTER TABLE `sessions`
+	ADD PRIMARY KEY (`session_id`);
+```
+
+# Switch from Vulnerable to Secured Application
+The [Application](Application) directory contains both secured and vulnerable code. This is fo testing purposes. To assist with this I created a bash script [swap.sh](swap.sh). 
+
+Just run *swap.sh* from CLI, the script will detect if either secured or vulnerable preceeds index.php. The script then replaces the current index.php, Mileage.php, and Search.php with the opoosite of what currently preceeds [vuln/secure]-index.php.
+
+
+
 
 
 
