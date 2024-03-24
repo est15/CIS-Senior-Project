@@ -1,5 +1,5 @@
 # CIS-Senior-Project
-The GitHub containing my entire Computer Information Systems - Cybersecurity degree's capstone project. 
+The GitHub containing my entire University of Akron Computer Information Systems - Cybersecurity degree's capstone project. 
 
 ## Project Sections:
 A. **[Server Setup and Configuration](#-Server-Setup-&-Configuration)**
@@ -20,41 +20,39 @@ D. **[Switching from Vulnerable to Secured Application](#Switch-Vulnerable-to-Se
 Follow the below secitions to configure the [Ubuntu Server 22.04.4](https://releases.ubuntu.com/jammy/#:~:text=at%20all%20unsure.-,Server%20install%20image,-The%20server%20install) to host the web application.
  
 ## Installations
-This section contains all utilized installations for the project. 
+Install all of the below.
 
-### Apache
+### Apache:
 ```shell
 sudo apt install apache2
 ```
 
-### MySQL
-Install MySQL Server
+### MySQL:
 ```shell
 sudo apt install mysql-server
 ```
 *reference configurations [MySQL Setup](#MySQL-Server-Setup) section for walkthrough of setting up the MySQL server*
 
 ### PHP
-Install the necessary PHP components
+Install all of the necessary PHP components:
 ```bash
 sudo apt install php php-mysql libapache2-mod-php
 ```
  
 ## Configurations
-This section contains all utilized configurations for the project.
 
 ### Firewall Configurations
-Enable Uncomplicated Firewall
+Enable Uncomplicated Firewall:
 ```bash
 sudo ufw enable
 ```
 
-Allow SSH Access
+Allow SSH Access:
 ```bash
 sudo ufw allow OpenSSH
 ```
 
-Allow HTTP Traffic
+Allow HTTP Traffic:
 ```bash
 sudo ufw allow in "Apache"
 ```
@@ -104,12 +102,12 @@ sudo systemctl reload apache2
 ```
 
 ### ServerName Global Error Fix
-Add these two lines to Apache's configuration file:
+If the ServerName Global Error comes up when attempting verify Apache's operations, simply add these two lines to Apache's configuration file:
 ```bash
 echo -e "# Global ServerName Directive\nServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 ```
 
-Reload Apache
+Reload Apache:
 ```bash
 sudo systemctl reload apache2
 ```
@@ -117,7 +115,7 @@ sudo systemctl reload apache2
 ### MySQL Server Setup
 First thing is to run the **mysql_secure_installation** script, but it errors out wihtout first adjusting MySQL's root user authentication.
 
-Start MySQL Prompt
+Start MySQL Prompt:
 ```bash
 sudo mysql
 ```
@@ -125,7 +123,6 @@ sudo mysql
 Alter root's Authentication:
 ```mysql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-exit
 ```
 
 Run Secure Script:
@@ -144,24 +141,24 @@ Utilize the following for the script's prompts:
 ## Verifying Operations
 Reference the below section to illustrates what tests were performed to ensure the successful operation of the server. 
 
-### Verify Firewall
+### Verify Firewall:
 ```bash
 sudo ufw status
 ```
 
-### Verify Apache Server
+### Verify Apache Server:
 ```bash
 sudo apache2ctl configtest
 ```
 
 **NOTE: [Set ServerName directive Globally Error Fix](#ServerName-Global-Error-Fix)**
 
-### Verify MySQL Server
+### Verify MySQL Server:
 ```bash
 sudo mysql -u root -p -h localhost
 ``` 
 
-### Verify PHP is Installed
+### Verify PHP is Installed:
 ```bash
 php -v
 ```
@@ -209,6 +206,25 @@ ALTER TABLE `users`
 	MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 ```
 
+## Create Mileages Table
+```mysql
+CREATE TABLE `mileages` (
+	`id` int(10) UNSIGNED NOT NULL,
+	`username` VARCHAR(255) NOT NULL,
+	`VIN` VARCHAR(255) NOT NULL,
+	`mileage` VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+**Configure Primary Key:**
+```mysql
+ALTER TABLE 'mileages' ADD PRIMARY KEY ('id');
+```
+
+**Configure Auto Increment:**
+```mysql
+ALTER TABLE 'mileages' MODIFY 'id' int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+```
 # Configuring PHP Sessions
 ## Create the Sessions Table
 ```mysql
@@ -225,8 +241,17 @@ ALTER TABLE `sessions`
 	ADD PRIMARY KEY (`session_id`);
 ```
 
+**Make sure to update PHP-MySQL-Sessions database.class.php:**
+```php
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "password");
+define("DB_NAME", "mileage_master");
+```
+insert the above into the *// Define database configuration* section
+
 # Switch Vulnerable to Secured Application
-The [Application](Application) directory contains both secured and vulnerable code. This is fo testing purposes. To assist with this I created a bash script [swap.sh](swap.sh). 
+The [Application](Application) directory contains both secured and vulnerable code. This is for testing purposes. To assist with this I created a bash script [swap.sh](swap.sh). 
 
 Just run *swap.sh* from CLI, the script will detect if either secured or vulnerable preceeds index.php. The script then replaces the current index.php, Mileage.php, and Search.php with the opoosite of what currently preceeds [vuln/secure]-index.php.
 
