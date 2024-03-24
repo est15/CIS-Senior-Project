@@ -17,7 +17,7 @@ D. **[Switching from Vulnerable to Secured Application](#Switch-Vulnerable-to-Se
 
 
 # Server Setup & Configuration
-Follow the below secitions to configure the Ubuntu Server 22.04.4 to host the web application.
+Follow the below secitions to configure the [Ubuntu Server 22.04.4](https://releases.ubuntu.com/jammy/#:~:text=at%20all%20unsure.-,Server%20install%20image,-The%20server%20install) to host the web application.
  
 ## Installations
 This section contains all utilized installations for the project. 
