@@ -13,7 +13,7 @@ B. **[Mileage Master Schema](#Mileage-Master-Database-Configuration])**
 
 C. **[PHP Sessions Setup](#Configuring-PHP-Sessions)**
 
-D. [Switching from Vulnerable to Secured Application](#Switch-Vulnerable-to-Secured-Application)
+D. **[Switching from Vulnerable to Secured Application](#Switch-Vulnerable-to-Secured-Application)**
 
 
 # Server Setup & Configuration
