@@ -2,11 +2,11 @@
 The GitHub containing my entire Computer Information Systems - Cybersecurity degree's capstone project. 
 
 ## Project Sections:
-	A. [link](#-Server-Setup-&-Configuration)
-		1. [Installations](#Installations)
-		2. [Configurations](#Configurations)
-		3. [Verifying Operations](#Verifying-Operations)
-	B. [link]
+A. [Server Setup and Configuration](#-Server-Setup-&-Configuration)
+	1. [Installations](#Installations)
+	2. [Configurations](#Configurations)
+	3. [Verifying Operations](#Verifying-Operations)
+B. [Mileage Master Schema](#Mileage-Master-Database-Configuration])
 
 
 # Server Setup & Configuration
@@ -166,6 +166,8 @@ Create an info.php file in Mileage Master's root directory:
 ```
 
 Accessing info.php in a web browser should output a page with the current PHP installation's details. 
+
+# Mileage Master Database Configuration
 
 
 
