@@ -3,6 +3,7 @@
 # Application directory
 homedir=/var/www/mileagemaster
 
+# Check and Swap Application from Vulnerable to Secure and vice cersa
 if [ -f $homedir/vuln-index.php ]
 then
         echo -e "\n\e[31m[*]\e[0m Swapping to \e[31mVULNERABLE\e[0m Version \e[31m[*]\e[0m"
