@@ -23,13 +23,13 @@ Follow the below secitions to configure the [Ubuntu Server 22.04.4](https://rele
 This section contains all utilized installations for the project. 
 
 ### Apache
-```bash
+```shell
 sudo apt install apache2
 ```
 
 ### MySQL
 Install MySQL Server
-```bash
+```shell
 sudo apt install mysql-server
 ```
 *reference configurations [MySQL Setup](#MySQL-Server-Setup) section for walkthrough of setting up the MySQL server*
